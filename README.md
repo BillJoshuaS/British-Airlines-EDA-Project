@@ -10,3 +10,67 @@ This project analyzes airline operational performance, customer satisfaction, an
 - Data Cleaning & Transformation: SQL
 
 The goal is to build a structured database model, clean and standardize raw data, perform exploratory data analysis (EDA), and generate meaningful insights through an interactive Power BI dashboard.
+
+## Data Architecture & Workflow
+### Step 1 – Data Import
+- Imported all raw CSV files into MySQL.
+- Designed relational schema by identifying key relationships between tables.
+- Created proper database model for reporting.
+
+### Step 2 – Staging Strategy
+- Created staging copies of all tables.
+- Ensured raw data integrity.
+- Prevented accidental data loss during cleaning.
+
+## Data Cleaning & EDA Process
+### Removing Duplicates
+- Used ROW_NUMBER() window function to identify duplicates.
+- Removed duplicates where a unique identifier existed.
+- Customer comment duplicates were reviewed but retained if non-critical.
+
+### Standardizing Data
+- Cleaned inconsistent categorical values.
+- Ensured consistent naming (e.g., Cabin categories).
+- Converted textual dates using: (SQL) => STR_TO_DATE(column_name, '%m%d%Y')
+- Ensured proper MySQL DATE formatting (yyyy-mm-dd).
+
+### NULL & Invalid Value Handling
+NULL handling was decided based on business impact.
+
+📌 Survey Data – Inflight Satisfaction
+| Column                | Action Taken                                     |
+| --------------------- | ------------------------------------------------ |
+| score                 | 11k NULL/invalid (not imported – retained as is) |
+| cabin_name            | Replaced by cabin_code_desc                      |
+| entity                | Removed 3 NULL records                           |
+| loyalty_program_level | NULL → Assumed Non-member                        |
+| departure_gate        | Left as is                                       |
+| arrival_gate          | Left as is                                       |
+
+📌 Customer Comment Table
+| Column                | Action                       |
+| --------------------- | ---------------------------- |
+| loyalty_program_level | NULL → Replaced with 'Guest' |
+| verbatim_text         | Not altered                  |
+| transformed_text      | Not altered                  |
+
+Power BI handles NULL values efficiently for reporting.
+
+## Sampling Strategy (Passenger Booking Table)
+Passenger Booking dataset was large. To optimize performance:
+
+Sampling Methods Evaluated
+
+- Simple Random Sampling (SRS)
+Easy but may distort distribution.
+- Stratified Sampling (Selected Approach)
+Preserves data distribution and reduces loss of rare categories.
+
+Stratified sampling was implemented using Python.
+
+Selection criteria considered:
+
+- Numerical skewness
+- Categorical skewness
+- Rare booking recovery
+- Distribution preservation
