@@ -74,3 +74,98 @@ Selection criteria considered:
 - Categorical skewness
 - Rare booking recovery
 - Distribution preservation
+
+## Key Features Used in Dashboard
+### Survey Data – Satisfaction Analysis
+
+- Score
+- Satisfaction Type
+- Arrival Delay Minutes
+- Cabin Code Description
+- Generation
+- International/Domestic Indicator
+- Loyalty Program Level
+- Response Group
+
+### Customer Comment Analysis
+
+- Scheduled Departure Date
+- Arrival/Departure Delay Groups
+- Entity (Region)
+- Fleet Type
+- Sentiment
+- Loyalty Level
+
+### Passenger Booking Insights
+- Sales Channel
+- Trip Type
+- Flight Duration
+- Flight Day
+- Booking Origin
+- Extra Baggage Preference
+- Preferred Seat
+- Booking Completion Status
+
+## DAX & Calculated Measures
+### Custom measures were created for:
+
+- Customer benefits calculation
+- Trip type frequency
+- KPI aggregation
+- Dynamic filtering
+- Performance indicators
+
+### DAX best practices followed:
+
+- Proper filter context
+- String comparison with single quotes
+- Column referencing standards
+
+## Dashboard Structure (Power BI)
+### Page 1 – Performance Analysis
+- Total Trips KPI
+- Reviews Received
+- Delay vs On-time Ratio
+- Cabin Class Distribution
+- Satisfaction Breakdown
+- Daily Flight Trend
+- Generational Customer Analysis (Tree Map)
+
+### Page 2 – Customer Feeds
+
+- Sentiment Analysis
+- Loyalty vs Feedback
+- Delay Group Analysis
+- Fleet Performance Insights
+
+## Design & UI
+
+- Primary Theme Colors: (Cyan: #20E2D7) (Dark Cyan: #10789E)
+- Tree Map used for generation classification.
+- Page Navigator for structured navigation.
+- Clean KPI cards and category matrices.
+
+## Key Business Insights
+
+- Majority of passengers fall under Economy cabin.
+- Loyalty segmentation impacts satisfaction levels.
+- Certain generations show stronger brand loyalty.
+- Delay patterns vary by region and flight type.
+- Trip type frequency highlights dominant customer behavior.
+
+## Technical Challenges Faced
+- MySQL NULL import issues
+- Date formatting inconsistencies
+- Handling large booking dataset
+- Distribution-preserving sampling
+- Data modeling between multiple fact tables
+
+## Future Improvements
+- Full delay vs on-time ratio calculation (requires total flight count dataset)
+- Deep sentiment scoring model integration
+- Automated ETL pipeline
+- Advanced predictive delay analysis
+- Customer churn risk modeling
+
+# Conclusion and Project Outcomes:
+This project demonstrates a complete end-to-end data analytics workflow, starting from raw dataset ingestion to delivering actionable insights through an interactive business intelligence dashboard. The work involved designing a relational database in MySQL, performing structured data cleaning and exploratory data analysis (EDA), applying appropriate sampling techniques for large datasets, and building analytical visualizations using Power BI.
